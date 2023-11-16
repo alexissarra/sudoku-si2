@@ -1,6 +1,7 @@
 import tkinter as tkt 
 from tkinter import ttk
 
+
 def fP():
     root = tkt.Tk()
     root.title('Jeu du Sudoku') 
@@ -12,7 +13,7 @@ def fP():
     easy_button = ttk.Button(
         root,
         text='Simple',
-        command = f1
+        command = f1 and root.quit(fP())
     )
     easy_button.pack(
         ipadx=5,
@@ -55,7 +56,7 @@ def f1():
     root2.geometry('600x400+50+50')
     message = tkt.Label(root2, text="Simple")
     message.pack()
-
+    
     exit2_button = ttk.Button(
     root2,
     text='Retour au menu principale',
@@ -66,9 +67,6 @@ def f1():
     ipady=5,
     expand=True
     )
-    
-
-
 
 
 
