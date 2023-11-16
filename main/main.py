@@ -13,7 +13,7 @@ def fP():
     easy_button = ttk.Button(
         root,
         text='Simple',
-        command = f1 and root.quit(fP())
+        command = f1
     )
     easy_button.pack(
         ipadx=5,
@@ -49,6 +49,8 @@ def fP():
         expand=True
     )
     root.mainloop()
+    
+
 
 def f1(): 
     root2 = tkt.Tk()
@@ -59,7 +61,7 @@ def f1():
     
     exit2_button = ttk.Button(
     root2,
-    text='Retour au menu principale',
+    text='Retour au menu principal',
     command= fP
     )
     exit2_button.pack(
