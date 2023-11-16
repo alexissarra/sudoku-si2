@@ -42,25 +42,23 @@ def chercher_les_possibilites_ligne_colonne(region : list) -> list :
             grilles_des_possibilites.append(grille_temporaire)
             region_ligne = region_ligne[region_ligne.index(number) +1:]
             grille_temporaire = []
-            
-    print("grille en ligne :", grilles_des_possibilites)
-    # Chercher les voisins en haut et en bas
-    compteur = 0
-    for number in region_colonne :
-        if number == 0 :
-            for element in grilles_des_possibilites[compteur]:
-                print(region_colonne[region_colonne.index(2)])
-                if region_colonne[region_colonne.index(number) - 3] == element or region_colonne[region_colonne.index(number) - 3] == element:
-                    print("AH")
-                    grilles_des_possibilites.pop([compteur[grilles_des_possibilites.index(element)]])
-            compteur += 1      
-
 
     return grilles_des_possibilites
-
 
 grille_premier = chercher_les_possibilites_ligne_colonne(test)
 print(grille_premier)
 
 
+# Il faut que je détermine toutes les combinaisons alors possibles pour la région donnée
 
+# Chaque liste de possibilités en ligne est de dimension 7
+
+possibilite = []
+for mu1 in grille_premier[0]:
+    for mu2 in grille_premier[1]:
+        for mu3 in grille_premier[2]:
+
+            possibilite.append([mu1, mu2, mu3])
+
+
+print(possibilite)
