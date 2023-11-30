@@ -8,7 +8,7 @@ root.title('Jeu du Sudoku') #donne un nom à la fenêtre
 root.geometry('600x400+50+50')
 
 # logo
-root.iconbitmap('Alexis.jpg')
+root.iconbitmap('Alexis.JPG')
 
 # création du message
 message = tkt.Label(root, text="Choisissez votre difficulté")

@@ -5,15 +5,15 @@ from tkinter import *
 ##----- Définition des Variables globales -----##
 n=9
 L=50
-N=int(L*n+4)
-d= 4
+N=int(L*n+4)                                        #
+d= 4                                                #décalage (épaisseur trait cadre)
 
 ##-----Création de la fenêtre-----##
 fen = Tk()
-fen.title('name')
+fen.title('Grille SUDOKU')
 
 ##-----Création du canevas-----##
-dessin=Canvas(fen, bg="white", width=N, height=N)
+dessin=Canvas(fen, bg="yellow", width=N, height=N)
 dessin.grid(padx=50, pady=50)
 
 
