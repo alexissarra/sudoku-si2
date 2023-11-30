@@ -1,4 +1,44 @@
 # Création d'une matrice valide connue via internet
+import copy
+def chercher_les_possibilites_ligne_colonne(region : list) -> list :
+    print(region)
+    region_ligne = copy.deepcopy(region)
+    grille_des_chiffres = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    grilles_des_possibilites = []
+    grille_temporaire = []
+
+    # Chercher les voisins à gauche et à droite
+    for number in region_ligne:
+        if number == 0 :
+            print(number)
+            for element in grille_des_chiffres :
+                
+                if grille_des_chiffres.index(element) == 0:
+                     if region_ligne[region_ligne.index(number) + 1] != element:
+                         grille_temporaire.append(element)
+                elif grille_des_chiffres.index(element) == (len(grille_des_chiffres) - 1):
+                    
+                    if region_ligne[region_ligne.index(number) - 1] != element:
+                        grille_temporaire.append(element)   
+                else:
+                    if region_ligne[region_ligne.index(number) - 1] != element and region_ligne[region_ligne.index(number) + 1] != element: 
+                        grille_temporaire.append(element)
+                    
+            grilles_des_possibilites.append(grille_temporaire)
+            region_ligne = region_ligne[region_ligne.index(number) +1:]
+            grille_temporaire = []
+
+    return grilles_des_possibilites
+
+
+def possibilite_recu(possibilite):
+    for element in possibilite:
+        if element[0] == element[1] or element[1] == element[2] or element[0] == element[2]:
+            possibilite.remove(element)
+            possibilite_recu(possibilite)
+    
+    return possibilite
+
 
 
 import numpy as np
@@ -21,46 +61,26 @@ print(matrice_a_trou)
 
 # Essayer d'évaluer les possibilités par région (carré de 3x3)
 
-test = [5, 0, 7, 2, 0, 8, 6, 0, 4]
-import copy
-def chercher_les_possibilites_ligne_colonne(region : list) -> list :
-    print(region)
-    region_ligne = copy.deepcopy(region)
-    region_colonne = copy.deepcopy(region)
-    print(region)
-    grille_des_chiffres = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    grilles_des_possibilites = []
-    grille_temporaire = []
+possibilite_totales = []
+for region in matrice_a_trou: # je détermine pour chaque région les possibilités
+    possibilites_ligne_region = chercher_les_possibilites_ligne_colonne(region.tolist())
 
-    # Chercher les voisins à gauche et à droite
-    for number in region_ligne:
-        if number == 0 :
-            for element in grille_des_chiffres :
-                if region_ligne[region_ligne.index(number) - 1] != element and region_ligne[region_ligne.index(number) + 1] != element: 
-                    grille_temporaire.append(element)
-                    
-            grilles_des_possibilites.append(grille_temporaire)
-            region_ligne = region_ligne[region_ligne.index(number) +1:]
-            grille_temporaire = []
-            
-    print("grille en ligne :", grilles_des_possibilites)
-    # Chercher les voisins en haut et en bas
-    compteur = 0
-    for number in region_colonne :
-        if number == 0 :
-            for element in grilles_des_possibilites[compteur]:
-                print(region_colonne[region_colonne.index(2)])
-                if region_colonne[region_colonne.index(number) - 3] == element or region_colonne[region_colonne.index(number) - 3] == element:
-                    print("AH")
-                    grilles_des_possibilites.pop([compteur[grilles_des_possibilites.index(element)]])
-            compteur += 1      
+# Il faut que je détermine toutes les combinaisons alors possibles pour la région donnée
+# Chaque liste de possibilités en ligne est de dimension 7
+
+    possibilite = []
+    for mu1 in possibilites_ligne_region[0]:
+        for mu2 in possibilites_ligne_region[1]:
+            for mu3 in possibilites_ligne_region[2]:
+
+                possibilite.append([mu1, mu2, mu3])   
+    a = possibilite_recu(possibilite)
+    a.sort()
+    possibilite_totales.append(a)
 
 
-    return grilles_des_possibilites
+print(possibilite_totales)
 
-
-grille_premier = chercher_les_possibilites_ligne_colonne(test)
-print(grille_premier)
 
 
 
