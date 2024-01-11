@@ -6,7 +6,7 @@ def fP():
     root = tkt.Tk()
     root.title('Jeu du Sudoku') 
     root.geometry('600x400+50+50')
-    root.iconbitmap('C:/Users/ponch/Documents/GitHub/sudoku-si2/Alexis.jpg')
+   # root.iconbitmap('C:/Users/ponch/Documents/GitHub/sudoku-si2/Alexis.jpg')
     message = tkt.Label(root, text="Choisissez votre difficulté")
     message.pack()
 
