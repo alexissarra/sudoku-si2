@@ -10,30 +10,32 @@ def fP():
     message = tkt.Label(root, text="Choisissez votre difficulté")
     message.pack()
 
-    easy_button = ttk.Button(
+    bouton_simple = ttk.Button(
         root,
         text='Simple',
-        command = f1
+        command = f1 and 
     )
-    easy_button.pack(
+    bouton_simple.pack(
         ipadx=5,
         ipady=5,
         expand=False
     )
-    normal_button = ttk.Button(
+    bouton_normal = ttk.Button(
         root,
-        text='Normal',  
+        text='Normal',
+        command = f2  
     )
-    normal_button.pack(
+    bouton_normal.pack(
         ipadx=5,
         ipady=5,
         expand=False
     )
-    impossible_button = ttk.Button(
+    bouton_difficile = ttk.Button(
         root,
         text='Difficile',
+        command = f3
     )
-    impossible_button.pack(
+    bouton_difficile.pack(
         ipadx=5,
         ipady=5,
         expand=False
@@ -49,14 +51,32 @@ def fP():
         expand=True
     )
     root.mainloop()
-    
+
 
 
 def f1(): 
+    root1 = tkt.Tk()
+    root1.title('Jeu du Sudoku') 
+    root1.geometry('600x400+50+50')
+    message = tkt.Label(root1, text="Simple")
+    message.pack()
+        
+    exit1_button = ttk.Button(
+    root1,
+    text='Retour au menu principal',
+    command= fP
+    )
+    exit1_button.pack(
+    ipadx=5,
+    ipady=5,
+    expand=True
+    )
+    
+def f2(): 
     root2 = tkt.Tk()
     root2.title('Jeu du Sudoku') 
     root2.geometry('600x400+50+50')
-    message = tkt.Label(root2, text="Simple")
+    message = tkt.Label(root2, text="Normal")
     message.pack()
     
     exit2_button = ttk.Button(
@@ -70,7 +90,23 @@ def f1():
     expand=True
     )
 
-
+def f3(): 
+    root3 = tkt.Tk()
+    root3.title('Jeu du Sudoku') 
+    root3.geometry('600x400+50+50')
+    message = tkt.Label(root3, text="Difficile")
+    message.pack()
+    
+    exit3_button = ttk.Button(
+    root3,
+    text='Retour au menu principal',
+    command= fP
+    )
+    exit3_button.pack(
+    ipadx=5,
+    ipady=5,
+    expand=True
+    )
 
 print(fP())
 
