@@ -26,7 +26,7 @@ def test():
 
     exit2_button = ttk.Button(
     root2,
-    text='Quitter',
+    text="Retour à l'acceuil",
     command=lambda: root2.quit()
     )
     
