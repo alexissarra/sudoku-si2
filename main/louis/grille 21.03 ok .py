@@ -6,13 +6,13 @@ class SudokuSolver(tk.Tk):
         super().__init__()
         self.title("Sudoku Solver")
 
-        self.matrice_valide = np.array([
+        matrice_valide = np.array([
             [5, 9, 7, 2, 1, 8, 6, 3, 4], [4, 3, 1, 5, 7, 6, 2, 8, 9], [6, 2, 8, 3, 9, 4, 1, 7, 5],
             [4, 8, 6, 1, 2, 5, 9, 7, 3], [7, 1, 3, 6, 9, 4, 8, 5, 2], [9, 5, 2, 7, 8, 3, 4, 1, 6],
             [3, 5, 1, 7, 4, 2, 8, 6, 9], [9, 4, 8, 1, 6, 5, 3, 2, 7], [2, 6, 7, 8, 3, 9, 5, 4, 1]
         ])
 
-        self.matrice_a_trou = np.array([
+        matrice_a_trou = np.array([
             [5, 0, 7, 2, 0, 8, 6, 0, 4], [0, 0, 1, 0, 0, 6, 0, 8, 0], [0, 0, 0, 3, 9, 0, 0, 7, 5],
             [0, 0, 0, 1, 0, 0, 9, 7, 0], [0, 1, 3, 6, 0, 4, 8, 5, 0], [0, 5, 2, 0, 0, 3, 0, 0, 0],
             [3, 5, 0, 0, 4, 2, 0, 0, 0], [0, 4, 0, 1, 0, 0, 3, 0, 0], [2, 0, 7, 8, 0, 9, 0, 0, 1]
@@ -39,22 +39,26 @@ class SudokuSolver(tk.Tk):
                     row_entries.append(label)
             self.entries.append(row_entries)
 
-        self.verify_button = tk.Button(self, text="Vérifier", command=recuperer_valeurs_grille)
+        self.verify_button = tk.Button(self, text="Vérifier", command=r
         self.verify_button.pack()
 
-
-
-def recuperer_valeurs_grille(entries):
-    matrice_v_verif = np.zeros((9, 9), dtype=int)
-    for i in range(9):
-        for j in range(9):
-            if isinstance(entries[i][j], tk.Entry):
-                 value = entries[i][j].get()
-                 if value.isdigit():
-                     matrice_v_verif[i, j] = int(value)
-                 else:
-                     matrice_v_verif[i, j] = 0
-    return matrice_v_verif
+def recuperer_valeurs_grille():
+       grille_joueur = []
+       for i in range(9):
+           row_values = []
+           for j in range(9):
+               if isinstance(self.entries[i][j], tk.Entry):
+                   value = self.entries[i][j].get()
+                   if value.isdigit():
+                       row_values.append(int(value))
+                   else:
+                       row_values.append(0)
+               else:
+                   row_values.append(self.matrice_a_trou[i][j])
+           grille_joueur.append(row_values)
+       grille_joueur = np.array(grille_joueur)
+       print("Grille du joueur:")
+       print(grille_joueur)
 
 
 if __name__ == "__main__":
