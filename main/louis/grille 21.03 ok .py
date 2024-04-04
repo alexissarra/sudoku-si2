@@ -44,17 +44,17 @@ class SudokuSolver(tk.Tk):
 
 
 
-#def recuperer_valeurs_grille(entries):
-#    matrice_v_verif = np.zeros((9, 9), dtype=int)
-#   for i in range(9):
-#       for j in range(9):
-#            if isinstance(entries[i][j], tk.Entry):
-#                value = entries[i][j].get()
-#                if value.isdigit():
-#                    matrice_v_verif[i, j] = int(value)
-#                else:
-#                    matrice_v_verif[i, j] = 0
-#    return matrice_v_verif
+def recuperer_valeurs_grille(entries):
+    matrice_v_verif = np.zeros((9, 9), dtype=int)
+    for i in range(9):
+        for j in range(9):
+            if isinstance(entries[i][j], tk.Entry):
+                 value = entries[i][j].get()
+                 if value.isdigit():
+                     matrice_v_verif[i, j] = int(value)
+                 else:
+                     matrice_v_verif[i, j] = 0
+    return matrice_v_verif
 
 
 if __name__ == "__main__":
