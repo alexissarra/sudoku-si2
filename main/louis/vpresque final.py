@@ -39,15 +39,21 @@ class SudokuSolver:
         valeurs_grille = np.zeros((9, 9), dtype=int)  # Créer un tableau numpy de la même forme que les grilles
 
         for i in range(9):
-            for j in range(9):
-                valeur = self.entries[i][j].get()  # Récupérer la valeur entrée par le joueur
-                if valeur:  # Vérifier si une valeur a été entrée
-                    valeurs_grille[i][j] = int(valeur)  # Stocker la valeur dans le tableau numpy
+         for j in range(9):
+                if isinstance(self.entries[i][j], tk.Entry):  # Vérifier si c'est un Entry
+                    valeur = self.entries[i][j].get()  # Récupérer la valeur entrée par le joueur
+                    if valeur:  # Vérifier si une valeur a été entrée
+                        valeurs_grille[i][j] = int(valeur)  # Stocker la valeur dans le tableau numpy
+                else:  # Si c'est un Label
+                    valeur = self.entries[i][j]["text"]  # Récupérer le texte du label
+                    if valeur:
+                        valeurs_grille[i][j] = int(valeur)  # Stocker la valeur dans le tableau numpy
 
         print("Valeurs de la grille entrées par le joueur :")
         print(valeurs_grille)
 
         return valeurs_grille
+
                 
 
 
