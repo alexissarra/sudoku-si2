@@ -24,15 +24,15 @@ class SudokuSolver:
 
         self.entries = [[0 for _ in range(9)] for _ in range(9)]
 
-        for ensembleRegion in range(0, 3):
-            for element in range(0, 3):
-                for i in range(0 + ensembleRegion*3, 3 + ensembleRegion*3):
-                
-                    for j in range(0, 3):
-                        print(i, j+element*3)
-                        self.entries[i][j+element*3] = tk.Label(self.frame, text=str(matrice_a_trou[i][j+element*3]), width=5, relief="ridge")
 
-                        self.entries[i][j+element*3].grid(row=i, column=j+element*3)
+        for i in range(0,9):
+            for j in range(0,9):
+                if matrice_a_trou[i][j] != 0:
+                    entry = tk.Entry(root, width=2, font=('Helvetica', 20, 'bold'), bd=5, justify='center', state='disabled')
+                    entry.insert(0, str(matrice_a_trou[i][j]))
+                else:
+                    entry = tk.Entry(root, width=2, font=('Helvetica', 20, 'bold'), bd=5, justify='center')
+                    entry.grid(row=i, column=j)
 
 
         self.check_button = tk.Button(self.root, text="Vérifier", command=self.verify)

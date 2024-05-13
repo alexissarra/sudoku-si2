@@ -28,7 +28,7 @@ class SudokuSolver(tk.Tk):
         for i in range(9):
             row_entries = []
             for j in range(9):
-                value = self.matrice_a_trou[i, j]
+                value = matrice_a_trou[i, j]
                 if value == 0:
                     entry = tk.Entry(self.frame, width=2, font=('Helvetica', 16), justify='center')
                     entry.grid(row=i, column=j)
@@ -39,7 +39,7 @@ class SudokuSolver(tk.Tk):
                     row_entries.append(label)
             self.entries.append(row_entries)
 
-        self.verify_button = tk.Button(self, text="Vérifier", command=r
+        self.verify_button = tk.Button(self, text="Vérifier", command=recuperer_valeurs_grille)
         self.verify_button.pack()
 
 def recuperer_valeurs_grille():
