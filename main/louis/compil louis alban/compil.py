@@ -48,14 +48,7 @@ def fenetre_difficulté(difficulty, parent_window): # créer une fenêtre en fon
     
     label = tk.Label(difficulty_window, text=f"Difficulté: {difficulty}", font=("Arial", 16))
     label.pack(pady=20)
-    
-    btn_home = tk.Button(difficulty_window, text="Retour à l'accueil", command=lambda: return_to_main(difficulty_window, parent_window))
-    btn_home.pack(pady=10)
 
-    check_button = tk.Button(difficulty_window, text="Vérifier", command=lambda: recuperer_valeurs_grille(entries))
-    check_button.pack()
-    
-    
     frame = tk.Frame(difficulty_window)
     frame.pack()
     entries = [[0 for _ in range(9)] for _ in range(9)]
@@ -66,7 +59,31 @@ def fenetre_difficulté(difficulty, parent_window): # créer une fenêtre en fon
                 entries[i][j] = tk.Label(frame, text=str(matrice_a_trou[i][j]), width=5, relief="ridge")
             else:
                 entries[i][j] = tk.Entry(frame, width=5)
+            entries[i][j].grid(row=i, column=j)  
+
+    check_button = tk.Button(difficulty_window, text="Vérifier", command=lambda: recuperer_valeurs_grille(entries))
+    check_button.pack(pady=10)          
+
+    sol_button = tk.Button(difficulty_window,text="Solution", command= lambda : fenetre_solution())
+    sol_button.pack(pady=10)
+
+    btn_home = tk.Button(difficulty_window, text="Retour à l'accueil", command=lambda: return_to_main(difficulty_window, parent_window))
+    btn_home.pack(pady=10)
+
+def fenetre_solution():
+    sol_window = tk.Tk()
+    sol_window.geometry("600x400+50+50")
+    sol_window.title("Jeu du Sudoku")
+    
+    frame = tk.Frame(sol_window)
+    frame.pack(pady=50)
+    entries = [[0 for _ in range(9)] for _ in range(9)]
+
+    for i in range(9):
+        for j in range(9):
+            entries[i][j] = tk.Label(frame, text=str(matrice_valide[i][j]), width=5, relief="ridge", fg='green')
             entries[i][j].grid(row=i, column=j)
+    
 
     
 
