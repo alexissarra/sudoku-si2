@@ -13,7 +13,7 @@ def fP():
     bouton_simple = ttk.Button(
         root,
         text='Simple',
-        command = f1 and 
+        command = f1  
     )
     bouton_simple.pack(
         ipadx=5,
