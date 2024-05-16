@@ -288,7 +288,7 @@ for element in possibilite_totales:
         
 print(compteur_colonnes, compteur_lignes, compteur_regions)
 
-
+print(possibilites_colonnes[0])
 
         
 
@@ -298,6 +298,8 @@ print(compteur_colonnes, compteur_lignes, compteur_regions)
 # Je prends une région possible et j'essaie de compléter avec des colonnes qui pourraient correspondre et des lignes qui pourraient correspondre
 # Si elle est valide, je la garde, sinon je la supprime
 
+
+# Ce q
 
 '''
 for region1 in possibilite_totales[0]:
