@@ -17,7 +17,7 @@ matrice_a_trou = np.array([
 
 def fenetre_principale(): #fenêtre principale avec les boutons
     main_window = tk.Tk()
-    main_window.geometry("600x400+50+50")
+    main_window.geometry("1000x1000+50+50")
     main_window.title("Jeu du Sudoku")
    
     label = tk.Label(main_window, text="Choisissez votre difficulté", font=("Arial", 16))
@@ -43,7 +43,7 @@ def fenetre_principale(): #fenêtre principale avec les boutons
 def fenetre_difficulté(difficulty, parent_window): # créer une fenêtre en fonction de la difficulté sélectionné
     parent_window.withdraw()  # cache la fenêtre principale
     difficulty_window = tk.Toplevel()
-    difficulty_window.geometry("600x400+50+50")
+    difficulty_window.geometry("1000x1000+50+50")
     difficulty_window.title("Jeu du Sudoku - " + difficulty)
     
     label = tk.Label(difficulty_window, text=f"Difficulté: {difficulty}", font=("Arial", 16))
@@ -56,9 +56,9 @@ def fenetre_difficulté(difficulty, parent_window): # créer une fenêtre en fon
     for i in range(9):
         for j in range(9):
             if matrice_a_trou[i][j] != 0:
-                entries[i][j] = tk.Label(frame, text=str(matrice_a_trou[i][j]), width=5, relief="ridge")
+                entries[i][j] = tk.Label(frame, text=str(matrice_a_trou[i][j]), relief="groove", font=('Times 18'), width=3, fg = 'black',justify= "center", bg= '#E5E5E5' )
             else:
-                entries[i][j] = tk.Entry(frame, width=5)
+                entries[i][j] = tk.Entry(frame, relief="groove", font=('Times 18'),width=3, fg = 'blue', justify= "center",bg= '#E5E5E5')
             entries[i][j].grid(row=i, column=j)  
 
     check_button = tk.Button(difficulty_window, text="Vérifier", command=lambda: recuperer_valeurs_grille(entries))
@@ -81,8 +81,11 @@ def fenetre_solution():
 
     for i in range(9):
         for j in range(9):
-            entries[i][j] = tk.Label(frame, text=str(matrice_valide[i][j]), width=5, relief="ridge", fg='green')
-            entries[i][j].grid(row=i, column=j)
+            if matrice_a_trou[i][j] != 0:
+                entries[i][j] = tk.Label(frame, text=str(matrice_a_trou[i][j]), relief="ridge", font=('Times 18'), width=3, fg = 'black', justify= "center" )
+            else:
+                entries[i][j] = tk.Label(frame, text=str(matrice_valide[i][j]), relief="ridge", font=('Times 18'), width=3, fg = 'blue', justify= "center")
+            entries[i][j].grid(row=i, column=j)  
     
 
     

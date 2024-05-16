@@ -54,8 +54,7 @@ def fenetre_difficulté(difficulty, parent_window): # créer une fenêtre en fon
 
     check_button = tk.Button(difficulty_window, text="Vérifier", command=lambda: recuperer_valeurs_grille(entries))
     check_button.pack()
-    
-    
+    #########################################################################################################################################""""""
     frame = tk.Frame(difficulty_window)
     frame.pack()
     entries = [[0 for _ in range(9)] for _ in range(9)]
@@ -64,6 +63,8 @@ def fenetre_difficulté(difficulty, parent_window): # créer une fenêtre en fon
         for j in range(9):
             entries[i][j] = tk.Label(frame, text=str(matrice_valide[i][j]), width=5, relief="ridge", fg='green')
             entries[i][j].grid(row=i, column=j)
+    
+    ###########################################################################################################################################""
 
     
 
