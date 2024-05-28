@@ -57,9 +57,9 @@ def fenetre_difficulté(difficulty, parent_window): # créer une fenêtre en fon
     label = tk.Label(difficulty_window, text=f"Difficulté: {difficulty}", font=("Arial", 16))
     label.pack(pady=20)
 
-    frame = tk.Frame(difficulty_window)
-    frame.pack()
-    entries = [[0 for _ in range(9)] for _ in range(9)]
+    frame = tk.Frame(difficulty_window)                             #créer une frame sur la fenetre de jeu soit difficulty_window
+    frame.pack()                                                    #affiche la frame
+    entries = [[0 for _ in range(9)] for _ in range(9)]             #créer une zone de 9*9 soit 81 cases dans cette frame
     
     
     for i in range(9):
@@ -69,6 +69,11 @@ def fenetre_difficulté(difficulty, parent_window): # créer une fenêtre en fon
             else:
                 entries[i][j] = tk.Entry(frame, relief="groove", font=('Times 18'),width=3, fg = 'blue', justify= "center",bg= '#E5E5E5')
             entries[i][j].grid(row=i, column=j)   
+
+#       ces deux boucles permettent de mettre dans chaque case du label 
+#       soit un Label (c'est une zone de texte non modifiable) 
+#       soit un Entry (c'est est une zone de texte modifiable par le joueur)
+#       en fonction de la matrice tronqué  
 
     check_button = tk.Button(difficulty_window, text="Vérifier", command=lambda: verifier_grille(entries, difficulty_window))
     check_button.pack(pady=10)          
